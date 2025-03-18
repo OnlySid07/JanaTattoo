@@ -1,0 +1,75 @@
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="/images/background.jpg" 
+        alt="Tattoo art background" 
+        class="w-full h-full object-cover opacity-50"
+      />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+        Diseño minimalista.<br />
+        <span class="text-zinc-400">Arte permanente.</span>
+      </h1>
+      <p class="text-lg md:text-xl text-zinc-300 max-w-2xl mx-auto mb-10">
+        Creando tatuajes minimalistas únicos que cuentan tu historia con líneas limpias y elegancia atemporal.
+      </p>
+      
+      <div class="flex justify-center space-x-4">
+        <a href="#artists" class="px-6 py-3 bg-white text-black font-medium hover:bg-zinc-200 transition-colors text-center">
+          Nosotras
+        </a>
+        <a href="#contact" class="px-6 py-3 border border-zinc-700 text-white hover:bg-white/10 transition-colors text-center">
+          Reserve una consulta
+        </a>
+      </div>
+      
+      
+    </div>
+    
+    <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-zinc-400"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+  </section>
+  
+  <style>
+    /* Additional Tailwind classes */
+    .h-screen { height: 100vh; }
+    .relative { position: relative; }
+    .absolute { position: absolute; }
+    .inset-0 { top: 0; right: 0; bottom: 0; left: 0; }
+    .z-0 { z-index: 0; }
+    .z-10 { z-index: 10; }
+    .object-cover { object-fit: cover; }
+    .opacity-50 { opacity: 0.5; }
+    .text-4xl { font-size: 2.25rem; }
+    .md\:text-6xl { @media (min-width: 768px) { font-size: 3.75rem; } }
+    .lg\:text-7xl { @media (min-width: 1024px) { font-size: 4.5rem; } }
+    .leading-tight { line-height: 1.25; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-10 { margin-bottom: 2.5rem; }
+    .text-lg { font-size: 1.125rem; }
+    .md\:text-xl { @media (min-width: 768px) { font-size: 1.25rem; } }
+    .max-w-2xl { max-width: 42rem; }
+    .flex-col { flex-direction: column; }
+    .sm\:flex-row { @media (min-width: 640px) { flex-direction: row; } }
+    .gap-4 > * + * { margin-top: 1rem; }
+    .sm\:gap-4 > * + * { @media (min-width: 640px) { margin-top: 0; margin-left: 1rem; } }
+    .px-8 { padding-left: 2rem; padding-right: 2rem; }
+    .py-3 { padding-top: 0.75rem; padding-bottom: 0.75rem; }
+    .font-medium { font-weight: 500; }
+    .hover\:bg-zinc-200:hover { background-color: #e4e4e7; }
+    .hover\:bg-white\/10:hover { background-color: rgba(255, 255, 255, 0.1); }
+    .bottom-10 { bottom: 2.5rem; }
+    .left-1\/2 { left: 50%; }
+    .transform { transform: translateX(-50%); }
+    .animate-bounce { animation: bounce 1s infinite; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(-25%) translateX(-50%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
+      50% { transform: translateY(0) translateX(-50%); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
+    }
+  </style>
+  
+  

@@ -1,0 +1,167 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="min-h-screen bg-black text-zinc-200">
+      <header class="fixed w-full z-50 bg-black/80 backdrop-blur-sm border-b border-zinc-800">
+        <div class="container mx-auto px-4 py-4">
+          <nav class="flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tighter">Jana<span class="text-zinc-500">Tattoo</span></a>
+            <ul class="hidden md:flex space-x-8 text-sm uppercase tracking-widest">
+              <li><a href="#gallery" class="hover:text-white transition-colors">Galeria</a></li>
+              <li><a href="#artists" class="hover:text-white transition-colors">Artistas</a></li>
+              <li><a href="#contact" class="hover:text-white transition-colors">Contacto</a></li>
+            </ul>
+            <button id="mobile-menu-button" class="md:hidden text-zinc-400" aria-label="Menu">
+
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+            </button>
+          </nav>
+                   <!-- Menú móvil desplegable -->
+                   <div id="mobile-menu" class="md:hidden hidden pt-4 pb-2">
+                    <ul class="flex flex-col space-y-4 text-sm uppercase tracking-widest">
+                      <li><a href="#gallery" class="block hover:text-white transition-colors">Galeria</a></li>
+                      <li><a href="#artists" class="block hover:text-white transition-colors">Artistas</a></li>
+                      <li><a href="#contact" class="block hover:text-white transition-colors">Contacto</a></li>
+                    </ul>
+                  </div>
+        </div>
+      </header>
+      
+      <slot />
+      
+      <footer class="bg-zinc-900 py-12 border-t border-zinc-800">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0">
+              <a href="/" class="text-xl font-bold tracking-tighter">Jana<span class="text-zinc-500">Tattoo</span></a>
+              <p class="text-zinc-400 text-sm mt-2">Arte de tatuaje minimalista desde 2019</p>
+            </div>
+            <div class="flex space-x-6">
+              <a href="#" class="text-zinc-400 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+              </a>
+              <a href="#" class="text-zinc-400 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+              </a>
+              <a href="#" class="text-zinc-400 hover:text-white transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+              </a>
+            </div>
+          </div>
+          <div class="mt-8 pt-8 border-t border-zinc-800 text-center text-zinc-500 text-sm">
+            &copy; {new Date().getFullYear()} OnlySid07. All rights reserved.
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      // Funcionalidad del menú móvil
+      document.addEventListener('DOMContentLoaded', () => {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenuButton && mobileMenu) {
+          mobileMenuButton.addEventListener('click', () => {
+            // Toggle la clase 'hidden' para mostrar/ocultar el menú
+            mobileMenu.classList.toggle('hidden');
+            
+            // Cambiar el ícono del botón entre hamburguesa y X
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            
+            if (isOpen) {
+              mobileMenuButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+            } else {
+              mobileMenuButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>`;
+            }
+          });
+          
+          // Cerrar el menú cuando se hace clic en un enlace
+          const mobileLinks = mobileMenu.querySelectorAll('a');
+          mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+              mobileMenu.classList.add('hidden');
+              mobileMenuButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>`;
+            });
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    font-family: 'Montserrat', sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    margin: 0;
+  }
+  
+  /* Tailwind classes */
+  .container { width: 100%; max-width: 1280px; margin-left: auto; margin-right: auto; }
+  .mx-auto { margin-left: auto; margin-right: auto; }
+  .px-4 { padding-left: 1rem; padding-right: 1rem; }
+  .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+  .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+  .mt-2 { margin-top: 0.5rem; }
+  .mt-8 { margin-top: 2rem; }
+  .mb-6 { margin-bottom: 1.5rem; }
+  .md\:mb-0 { @media (min-width: 768px) { margin-bottom: 0; } }
+  .pt-8 { padding-top: 2rem; }
+  .min-h-screen { min-height: 100vh; }
+  .w-full { width: 100%; }
+  .fixed { position: fixed; }
+  .z-50 { z-index: 50; }
+  .flex { display: flex; }
+  .hidden { display: none; }
+  .md\:flex { @media (min-width: 768px) { display: flex; } }
+  .flex-col { flex-direction: column; }
+  .md\:flex-row { @media (min-width: 768px) { flex-direction: row; } }
+  .items-center { align-items: center; }
+  .justify-between { justify-content: space-between; }
+  .space-x-6 > * + * { margin-left: 1.5rem; }
+  .space-x-8 > * + * { margin-left: 2rem; }
+  .text-center { text-align: center; }
+  .text-sm { font-size: 0.875rem; }
+  .text-xl { font-size: 1.25rem; }
+  .text-2xl { font-size: 1.5rem; }
+  .font-bold { font-weight: 700; }
+  .uppercase { text-transform: uppercase; }
+  .tracking-tighter { letter-spacing: -0.05em; }
+  .tracking-widest { letter-spacing: 0.1em; }
+  .bg-black { background-color: #000; }
+  .bg-black\/80 { background-color: rgba(0, 0, 0, 0.8); }
+  .bg-zinc-900 { background-color: #18181b; }
+  .text-white { color: #fff; }
+  .text-zinc-200 { color: #e4e4e7; }
+  .text-zinc-400 { color: #a1a1aa; }
+  .text-zinc-500 { color: #71717a; }
+  .hover\:text-white:hover { color: #fff; }
+  .border-t { border-top-width: 1px; }
+  .border-b { border-bottom-width: 1px; }
+  .border-zinc-800 { border-color: #27272a; }
+  .transition-colors { transition-property: color; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+  .backdrop-blur-sm { backdrop-filter: blur(4px); }
+</style>
+

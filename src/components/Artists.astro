@@ -1,0 +1,72 @@
+---
+const artists = [
+  {
+    name: "Karla Salas",
+    role: "Blxckworker",
+    bio: "Especializado en diseños geométricos precisos con líneas limpias y simetría perfecta.",
+    image: "/images/Jana.jpg",
+    instagram: "https://www.instagram.com/janasalas09/"
+  },
+  {
+    name: "SoyChivi",
+    role: "Aprendiz de JANA TATTOO",
+    bio: "Creando impacto emocional a través de formas simplificadas y espacio negativo.",
+    image: "/images/chivi.jpg",
+    instagram: "https://www.instagram.com/soichivichivi/"
+  }
+];
+---
+
+<section id="artists" class="py-20 bg-black">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Nuestros artistas</h2>
+      <p class="text-zinc-400 max-w-2xl mx-auto">
+        Conozca a las personas talentosas detrás de nuestros diseños minimalistas, cada una con su perspectiva y experiencia únicas.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {artists.map(artist => (
+        <div class="group">
+          <div class="relative overflow-hidden mb-6">
+            <img 
+              src={artist.image || "/placeholder.svg"} 
+              alt={artist.name} 
+              class="w-full aspect-square object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+            />
+            <div class="absolute inset-0 bg-black/30 group-hover:bg-black/0 transition-colors duration-300"></div>
+            <a 
+              href={artist.instagram} 
+              class="absolute bottom-4 right-4 p-2 bg-black/50 backdrop-blur-sm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              aria-label={`${artist.name}'s Instagram`}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+          </div>
+          <h3 class="text-xl font-medium">{artist.name}</h3>
+          <p class="text-zinc-400 text-sm mb-3">{artist.role}</p>
+          <p class="text-zinc-500">{artist.bio}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Additional Tailwind classes */
+  .aspect-square { aspect-ratio: 1 / 1; }
+  .grayscale { filter: grayscale(100%); }
+  .group-hover\:grayscale-0:hover { filter: grayscale(0%); }
+  .p-2 { padding: 0.5rem; }
+  .bottom-4 { bottom: 1rem; }
+  .right-4 { right: 1rem; }
+  .group-hover\:bg-black\/0:hover { background-color: rgba(0, 0, 0, 0); }
+  .group-hover\:opacity-100:hover { opacity: 1; }
+  .mb-3 { margin-bottom: 0.75rem; }
+  .mb-6 { margin-bottom: 1.5rem; }
+  .p-8 { padding: 2rem; }
+  .mt-16 { margin-top: 4rem; }
+</style>
+
